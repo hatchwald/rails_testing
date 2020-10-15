@@ -1,12 +1,14 @@
 
+<div class="card">
+<div class="card-body">
 <%= form_with model: @article, local: true do |form| %>
  
   <% if @article.errors.any? %>
-        <div id="error_explanation">
-            <h2>
+        <div id="error_explanation" class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">
                 <%= pluralize(@article.errors.count, "error") %> prohibited
                 this article from being saved:
-            </h2>
+            </h4>
             <ul>
                 <% @article.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -15,18 +17,20 @@
         </div>
   <% end %>
  
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title,class: "form-control" %>
+  </div>
  
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+  <div class="form-group">
+    <%= form.label :text %>
+    <%= form.text_area :text , class: "form-control" %>
+  </div>
  
-  <p>
-    <%= form.submit %>
-  </p>
+    <%= tag.div class: %w( form-group mt-3) do %>
+        <%= form.submit class: %w( btn btn-primary ) %>
+    <% end %>
  
 <% end %>
+</div>
+</div>
